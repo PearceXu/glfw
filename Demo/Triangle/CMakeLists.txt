@@ -26,6 +26,7 @@ set(INC_DIR /usr/local/include/)
 set(INC_GLAD_DIR ${GLFW_SOURCE_DIR}/deps/)
 set(LINK_DIR /usr/local/lib)
 
+
 # include
 include_directories(${INC_GLAD_DIR})
 include_directories(${INC_DIR})
@@ -33,4 +34,4 @@ link_directories(${LINK_DIR})
 
 add_executable(Triangle ${DIR_SRCS} ${GLAD_GL} ${GLAD_VULKAN})
 
-target_link_libraries(Triangle glfw3 dl rt)
+target_link_libraries(Triangle glfw3 dl  pthread rt X11)
