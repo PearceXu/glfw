@@ -149,13 +149,8 @@ int main(void)
         return -1;
     }
     glfwMakeContextCurrent(window);
-
-    // if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    // {
-    //     std::cout << "Failed to initialize GLAD" << std::endl;
-    //     return -1;
-    // }
-
+    gladLoadGL(glfwGetProcAddress);
+    std::cout << "gl program excute here:\n" << std::endl;
     glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
 
     // 编译顶点渲染器，片元着色器
