@@ -14,21 +14,21 @@ using namespace std;
 class Shader
 {
 public:
-	// ³ÌĞòID
+	// ç¨‹åºID
 	unsigned int ID;
 	// colorshader
 	ifstream mColorShader;
 	ifstream mVertexShader;
 
 
-	// Ê¹ÓÃ/¼¤»î³ÌĞò
+	// ä½¿ç”¨/æ¿€æ´»ç¨‹åº
 	void use();
-	// uniform¹¤¾ßº¯Êı
+	// uniformå·¥å…·å‡½æ•°
 	void setBool(const std::string &name, bool value) const;
 	void setInt(const std::string &name, int value) const;
 	void setFloat(const std::string &name, float value) const;
 public:
-	// ¹¹ÔìÆ÷¶ÁÈ¡²¢¹¹½¨×ÅÉ«Æ÷
+	// æ„é€ å™¨è¯»å–å¹¶æ„å»ºç€è‰²å™¨
 	explicit Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
 	~Shader();
 };

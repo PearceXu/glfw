@@ -1,6 +1,4 @@
-// Triangle.cpp: ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
-//
-
+// Triangle.cpp: å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 #include <iostream>
@@ -38,11 +36,11 @@ Shader* shader;
 
 
 float vertices[] = {
-	//     ---- Î»ÖÃ ----       ---- ÑÕÉ« ----     - ÎÆÀí×ø±ê -
-	0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f,   // ÓÒÉÏ
-	0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f,   // ÓÒÏÂ
-	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f,   // ×óÏÂ
-	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f    // ×óÉÏ
+	//     ---- ä½ç½® ----       ---- é¢œè‰² ----     - çº¹ç†åæ ‡ -
+	0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f,   // å³ä¸Š
+	0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f,   // å³ä¸‹
+	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f,   // å·¦ä¸‹
+	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f    // å·¦ä¸Š
 };
 unsigned int indices[] = {
 	0, 1, 3, // first triangle
@@ -50,10 +48,10 @@ unsigned int indices[] = {
 };
 
 
-// äÖÈ¾
+// æ¸²æŸ“
 void render()
 {
-	// Í¼ĞÎ±ä»»
+	// å›¾å½¢å˜æ¢
 	glm::mat4 trans;
 	trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0, 0.0, 1.0));
 	trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
@@ -71,7 +69,7 @@ void render()
 }
 
 
-// ³õÊ¼»¯
+// åˆå§‹åŒ–
 void init()
 {
 
@@ -84,15 +82,15 @@ void init()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	// Î»ÖÃÖ¸Ïò
+	// ä½ç½®æŒ‡å‘
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	// ÑÕÉ«Ö¸Ïò
+	// é¢œè‰²æŒ‡å‘
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3*sizeof(float)));
 	glEnableVertexAttribArray(1);
 
-	// ÎÆÀí
+	// çº¹ç†
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
@@ -101,11 +99,11 @@ void init()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(indices), indices,GL_STATIC_DRAW);
 
-	// ´´½¨ÎÆÀí1
+	// åˆ›å»ºçº¹ç†1
 	int width, height, channelinFile;
 	unsigned char *data = stbi_load("imgs/container.jpg", &width, &height, &channelinFile, 0);
 	glGenTextures(1,&texture);
-	glActiveTexture(GL_TEXTURE0); // ÔÚ°ó¶¨ÎÆÀíÖ®Ç°ÏÈ¼¤»îÎÆÀíµ¥Ôª
+	glActiveTexture(GL_TEXTURE0); // åœ¨ç»‘å®šçº¹ç†ä¹‹å‰å…ˆæ¿€æ´»çº¹ç†å•å…ƒ
 	glBindTexture(GL_TEXTURE_2D,texture);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -119,10 +117,10 @@ void init()
 
 	stbi_image_free(data);
 
-	// ´´½¨ÎÆÀí2
+	// åˆ›å»ºçº¹ç†2
 	data = stbi_load("imgs/awesomeface.png",&width,&height,&channelinFile,0);
 	glGenTextures(1,&texture2);
-	glActiveTexture(GL_TEXTURE1); // ÔÚ°ó¶¨ÎÆÀíÖ®Ç°ÏÈ¼¤»îÎÆÀíµ¥Ôª
+	glActiveTexture(GL_TEXTURE1); // åœ¨ç»‘å®šçº¹ç†ä¹‹å‰å…ˆæ¿€æ´»çº¹ç†å•å…ƒ
 	glBindTexture(GL_TEXTURE_2D,texture2);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -135,7 +133,7 @@ void init()
 	glGenerateMipmap(GL_TEXTURE_2D);
 	stbi_image_free(data);
 
-	// Í¼ĞÎ±ä»»
+	// å›¾å½¢å˜æ¢
 	//glm::mat4 trans;
 	//trans = glm::rotate(trans, (float)glfwGetTime(),glm::vec3(0.0,0.0,1.0));
 	//trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
@@ -143,7 +141,7 @@ void init()
 	//glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 }
 
-// ÊÍ·Å×ÊÔ´
+// é‡Šæ”¾èµ„æº
 void release()
 {
 	glDeleteBuffers(1,&VAO);
@@ -168,24 +166,20 @@ int main(void)
 	}
 	glfwMakeContextCurrent(window);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
-	}
+    gladLoadGL(glfwGetProcAddress);
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-		// ±àÒë¶¥µãäÖÈ¾Æ÷£¬Æ¬Ôª×ÅÉ«Æ÷
+		// ç¼–è¯‘é¡¶ç‚¹æ¸²æŸ“å™¨ï¼Œç‰‡å…ƒç€è‰²å™¨
 	//Shader shader("shaders/shader.vs", "shaders/shader.fs");
 	shader = new Shader("shaders/shader.vs", "shaders/shader.fs");
 	shader->use();
-	shader->setInt("outTexture", 0); // »òÕßÊ¹ÓÃ×ÅÉ«Æ÷ÀàÉèÖÃ
-	shader->setInt("outTexture2", 1); // »òÕßÊ¹ÓÃ×ÅÉ«Æ÷ÀàÉèÖÃ
+	shader->setInt("outTexture", 0); // æˆ–è€…ä½¿ç”¨ç€è‰²å™¨ç±»è®¾ç½®
+	shader->setInt("outTexture2", 1); // æˆ–è€…ä½¿ç”¨ç€è‰²å™¨ç±»è®¾ç½®
 
 	init();
 
-	// ´´½¨×ÅÉ«Æ÷³ÌĞò
+	// åˆ›å»ºç€è‰²å™¨ç¨‹åº
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
