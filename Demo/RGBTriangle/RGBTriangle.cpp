@@ -1,4 +1,4 @@
-// Triangle.cpp: ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌÐòµÄÈë¿Úµã¡£
+// Triangle.cpp: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£
 //
 
 #include <glad\glad.h>
@@ -52,7 +52,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
 "}\n\0";
 unsigned int fragmentShader;
 
-// äÖÈ¾
+// ï¿½ï¿½È¾
 void render()
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -67,7 +67,7 @@ void render()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glBindVertexArray(0);
 }
-// ²éÑ¯´íÎó
+// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 void glGetShaderCompileError(int shaderId)
 {
 	int ret = -1;
@@ -80,7 +80,7 @@ void glGetShaderCompileError(int shaderId)
 	}
 }
 
-// ²éÑ¯Á´½Ó´íÎó
+// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½
 void glGetProgramCompileError(int program)
 {
 	int ret = -1;
@@ -93,10 +93,10 @@ void glGetProgramCompileError(int program)
 	}
 }
 
-// ³õÊ¼»¯äÖÈ¾Æ÷
+// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½
 void initShader()
 {
-	// ´´½¨×ÅÉ«Æ÷³ÌÐò
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	mProgram = glCreateProgram();
 
 	// vertex shader
@@ -116,7 +116,7 @@ void initShader()
 	glAttachShader(mProgram, fragmentShader);
 	glLinkProgram(mProgram);
 	glGetProgramCompileError(mProgram);
-	// É¾³ý×ÅÉ«Æ÷¶ÔÏó
+	// É¾ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
@@ -127,17 +127,17 @@ void initShader()
 	// VBO
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// Î»ÖÃ
+	// Î»ï¿½ï¿½
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	//ÑÕÉ«
+	//ï¿½ï¿½É«
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
 }
 
-// ÊÍ·Å×ÊÔ´
+// ï¿½Í·ï¿½ï¿½ï¿½Ô´
 void release()
 {
 	glDeleteShader(vertexShader);
@@ -169,7 +169,7 @@ int main(void)
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	// ±àÒë¶¥µãäÖÈ¾Æ÷£¬Æ¬Ôª×ÅÉ«Æ÷
+	// ï¿½ï¿½ï¿½ë¶¥ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½Æ¬Ôªï¿½ï¿½É«ï¿½ï¿½
 	initShader();
 	while (!glfwWindowShouldClose(window))
 	{
