@@ -1,8 +1,5 @@
-// Triangle.cpp: �������̨Ӧ�ó������ڵ㡣
-//
-
-#include <glad\glad.h>
-#include <GLFW\glfw3.h>
+#include <glad/gl.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 
 
@@ -52,7 +49,7 @@ const char *fragmentShaderSource = "#version 330 core\n"
 "}\n\0";
 unsigned int fragmentShader;
 
-// ��Ⱦ
+// 
 void render()
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -67,7 +64,7 @@ void render()
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 	glBindVertexArray(0);
 }
-// ��ѯ����
+// 
 void glGetShaderCompileError(int shaderId)
 {
 	int ret = -1;
@@ -80,7 +77,7 @@ void glGetShaderCompileError(int shaderId)
 	}
 }
 
-// ��ѯ���Ӵ���
+// 
 void glGetProgramCompileError(int program)
 {
 	int ret = -1;
@@ -93,10 +90,10 @@ void glGetProgramCompileError(int program)
 	}
 }
 
-// ��ʼ����Ⱦ��
+// 
 void initShader()
 {
-	// ������ɫ������
+	// 
 	mProgram = glCreateProgram();
 
 	// vertex shader
@@ -116,7 +113,7 @@ void initShader()
 	glAttachShader(mProgram, fragmentShader);
 	glLinkProgram(mProgram);
 	glGetProgramCompileError(mProgram);
-	// ɾ����ɫ������
+	//
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
@@ -127,17 +124,16 @@ void initShader()
 	// VBO
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	// λ��
+	//
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	//��ɫ
+	//
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
 }
 
-// �ͷ���Դ
 void release()
 {
 	glDeleteShader(vertexShader);
@@ -160,16 +156,9 @@ int main(void)
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
-	}
-
+	gladLoadGL(glfwGetProcAddress);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	// ���붥����Ⱦ����ƬԪ��ɫ��
 	initShader();
 	while (!glfwWindowShouldClose(window))
 	{
