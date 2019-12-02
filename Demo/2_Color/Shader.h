@@ -2,9 +2,9 @@
 #ifndef SHADER_H
 #define SHADER_H
 
-#include <glad\glad.h>
-#include <GLM\glm.hpp>
-#include <GLM/gtc/type_ptr.hpp>
+#include <glad/gl.h>
+#include <Glm/glm.hpp>
+#include <Glm/gtc/type_ptr.hpp>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -16,23 +16,23 @@ using namespace std;
 class Shader
 {
 public:
-	// ³ÌÐòID
+	// ï¿½ï¿½ï¿½ï¿½ID
 	unsigned int ID;
 	// colorshader
 	ifstream mColorShader;
 	ifstream mVertexShader;
 
 
-	// Ê¹ÓÃ/¼¤»î³ÌÐò
+	// Ê¹ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void use();
-	// uniform¹¤¾ßº¯Êý
+	// uniformï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½
 	void setBool(const std::string &name, bool value) const;
 	void setInt(const std::string &name, int value) const;
 	void setFloat(const std::string &name, float value) const;
 	void setMat4(const std::string &name,glm::mat4 matrix);
 	void setVec3(const std::string &name,glm::vec3 vec);
 public:
-	// ¹¹ÔìÆ÷¶ÁÈ¡²¢¹¹½¨×ÅÉ«Æ÷
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½
 	explicit Shader(const GLchar* vertexPath, const GLchar* fragmentPath);
 	~Shader();
 };
