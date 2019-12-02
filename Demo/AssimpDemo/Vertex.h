@@ -1,6 +1,6 @@
 #ifndef VERTEX_H
 #define VERTEX_H
-#include <GLM\glm.hpp>
+#include <Glm/glm.hpp>
 struct Vertex
 {
 	glm::vec3 position;

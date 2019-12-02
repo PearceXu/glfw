@@ -16,7 +16,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build)
 project (${TARGET})
 
 add_custom_target(copy
-  COMMAND cp -r ${CMAKE_SOURCE_DIR}/imgs ${CMAKE_SOURCE_DIR}/shaders  ${EXECUTABLE_OUTPUT_PATH}
+  COMMAND cp -r ${CMAKE_SOURCE_DIR}/imgs ${CMAKE_SOURCE_DIR}/shaders ${CMAKE_SOURCE_DIR}/res ${EXECUTABLE_OUTPUT_PATH}
   )
 
 aux_source_directory(. DIR_SRCS)
@@ -42,4 +42,4 @@ link_directories(${LINK_DIR})
 
 add_executable(${TARGET} ${DIR_SRCS} ${GLAD_GL} ${GLAD_VULKAN})
 
-target_link_libraries(${TARGET} glfw3 dl  pthread rt X11)
+target_link_libraries(${TARGET} glfw3 dl  pthread rt X11 assimp)
