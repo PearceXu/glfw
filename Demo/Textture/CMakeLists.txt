@@ -7,7 +7,7 @@ set(GLFW_SOURCE_DIR /home/xubaipei/workspace/glfw)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
-project (Triangle)
+project (Texture)
 
 aux_source_directory(. DIR_SRCS)
 
@@ -17,21 +17,19 @@ set(GLAD_GL "${GLFW_SOURCE_DIR}/deps/glad/gl.h"
 set(GLAD_VULKAN "${GLFW_SOURCE_DIR}/deps/glad/vulkan.h"
             "${GLFW_SOURCE_DIR}/deps/glad_vulkan.c")
 
-#set(GETOPT "${GLFW_SOURCE_DIR}/deps/getopt.h"
-#          "${GLFW_SOURCE_DIR}/deps/getopt.c")
-#set(TINYCTHREAD "${GLFW_SOURCE_DIR}/deps/tinycthread.h"
-#          "${GLFW_SOURCE_DIR}/deps/tinycthread.c")
-
 set(INC_DIR /usr/local/include/)
 set(INC_GLAD_DIR ${GLFW_SOURCE_DIR}/deps/)
 set(LINK_DIR /usr/local/lib)
+set(INC_GLM ${GLFW_SOURCE_DIR}/third_part/)
 
 
 # include
 include_directories(${INC_GLAD_DIR})
 include_directories(${INC_DIR})
+include_directories(${INC_GLM})
+
 link_directories(${LINK_DIR})
 
-add_executable(Triangle ${DIR_SRCS} ${GLAD_GL} ${GLAD_VULKAN})
+add_executable(Texture ${DIR_SRCS} ${GLAD_GL} ${GLAD_VULKAN})
 
-target_link_libraries(Triangle glfw3 dl  pthread rt X11)
+target_link_libraries(Texture glfw3 dl  pthread rt X11)

@@ -1,13 +1,13 @@
 // Triangle.cpp: 定义控制台应用程序的入口点。
-#include <glad\glad.h>
-#include <GLFW\glfw3.h>
+#include <glad/gl.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 #include "Shader.h"
 #include "stb_image.h"
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <Glm/glm.hpp>
+#include <Glm/gtc/matrix_transform.hpp>
+#include <Glm/gtc/type_ptr.hpp>
 
 
 #pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
