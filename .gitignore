@@ -101,4 +101,5 @@ tests/timeout
 tests/title
 tests/triangle-vulkan
 tests/windows
+vscode
 

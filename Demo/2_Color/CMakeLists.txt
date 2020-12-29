@@ -7,17 +7,23 @@ STRING( REGEX REPLACE ".*/(.*)" "\\1" CURRENT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}
 set(TARGET ${CURRENT_FOLDER})
 message("project name:"${TARGET})
 
-set(GLFW_SOURCE_DIR /home/xubaipei/workspace/glfw)
+set(GLFW_SOURCE_DIR ../../../glfw)
 #${PROJECT_SOURCE_DIR}
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/build)
 
-project (${TARGET})
+#project (${TARGET})
 
-add_custom_target(copy
-  COMMAND cp -r ${CMAKE_SOURCE_DIR}/imgs ${CMAKE_SOURCE_DIR}/shaders  ${EXECUTABLE_OUTPUT_PATH}
-  )
+IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+add_custom_target(copy${TARGET}
+  COMMAND cp -r ${CMAKE_CURRENT_SOURCE_DIR}/imgs ${CMAKE_CURRENT_SOURCE_DIR}/shaders  ${EXECUTABLE_OUTPUT_PATH})
+ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
+#message("project name:"copy -r ${CMAKE_CURRENT_SOURCE_DIR}/imgs ${CMAKE_CURRENT_SOURCE_DIR}/shaders  ${EXECUTABLE_OUTPUT_PATH})
+add_custom_target(copy${TARGET}
+  COMMAND copy -r ${CMAKE_CURRENT_SOURCE_DIR}/imgs ${CMAKE_CURRENT_SOURCE_DIR}/shaders  ${EXECUTABLE_OUTPUT_PATH})
+ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux")
+
 
 aux_source_directory(. DIR_SRCS)
 

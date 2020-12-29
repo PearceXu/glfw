@@ -20,6 +20,7 @@ endif()
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(GLFW_BUILD_EXAMPLES "Build the GLFW example programs" ${GLFW_STANDALONE})
+option(GLFW_BUILD_DEMO "Build the GLFW demo programs" ${GLFW_STANDALONE})
 option(GLFW_BUILD_TESTS "Build the GLFW test programs" ${GLFW_STANDALONE})
 option(GLFW_BUILD_DOCS "Build the GLFW documentation" ON)
 option(GLFW_INSTALL "Generate installation target" ON)
@@ -337,6 +338,10 @@ add_subdirectory(src)
 
 if (GLFW_BUILD_EXAMPLES)
     add_subdirectory(examples)
+endif()
+
+if (GLFW_BUILD_DEMO)
+    add_subdirectory(Demo)
 endif()
 
 if (GLFW_BUILD_TESTS)
