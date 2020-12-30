@@ -10,7 +10,8 @@
 #include <Glm/gtc/type_ptr.hpp>
 #include "Camera.h"
 
-#pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
+//#pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
+//#pragma comment( linker, "/subsystem:windows /entry:mainCRTStartup" )
 float view_width = 800.0f,view_height = 600.0f;
 Camera camera;
 

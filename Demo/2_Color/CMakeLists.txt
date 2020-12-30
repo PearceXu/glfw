@@ -67,19 +67,26 @@ include_directories(${INC_GLM})
 
 link_directories(${LINK_DIR})
 
-add_executable(${TARGET} ${DIR_SRCS} ${GLAD_GL} ${GLAD_VULKAN})
+	
 
-target_link_libraries(${TARGET} "${CMAKE_THREAD_LIBS_INIT}")
-if (RT_LIBRARY)
-    target_link_libraries(${TARGET} "${RT_LIBRARY}")
-endif()
-
-set_target_properties(${TARGET} PROPERTIES
-                      FOLDER "GLFW3/Examples")
-					  
 if (MSVC)
     # Tell MSVC to use main instead of WinMain for Windows subsystem executables
     set_target_properties(${WINDOWS_BINARIES} PROPERTIES
                           LINK_FLAGS "/ENTRY:mainCRTStartup")
 endif()
+
+set(CMAKE_EXE_LINKER_FLAGS"${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+
+
+add_executable(${TARGET} ${DIR_SRCS} ${GLAD_GL} ${GLAD_VULKAN})
+
+set_target_properties(${TARGET} PROPERTIES
+                      FOLDER "GLFW3/Demos")
+					  
+target_link_libraries(${TARGET} "${CMAKE_THREAD_LIBS_INIT}")
+if (RT_LIBRARY)
+    target_link_libraries(${TARGET} "${RT_LIBRARY}")
+endif()
+
+
 
